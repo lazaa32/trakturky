@@ -33,7 +33,7 @@ create table car_client (
   ico varchar2(100 char),
   registration_date date not null,
   email varchar2(150 char),
-  cell_phone  varchar2(16 char),
+  ceil_phone  varchar2(16 char),
   
   constraint PK_car_client_id primary key (id),
   constraint CHK_car_client_001 check ((ico is not null and surname is null) or (ico is null and surname is not null and email is not null))

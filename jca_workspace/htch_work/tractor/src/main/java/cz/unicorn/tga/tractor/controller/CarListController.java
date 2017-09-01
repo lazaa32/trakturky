@@ -7,8 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import cz.unicorn.tga.tractor.model.CarOverview;
-import cz.unicorn.tga.tractor.model.StkOverview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
@@ -55,19 +53,12 @@ public class CarListController {
 		return result.toArray(new CarDTO[result.size()]);
 	}
 
-    @RequestMapping(value = "/overview", method = RequestMethod.GET)
-    public CarOverview[] carOverview() {
-        final List<CarOverview> cars = carService.getOverview();
-
-        return cars.toArray(new CarOverview[cars.size()]);
-    }
-
-    @RequestMapping(value = "/stk", method = RequestMethod.GET)
-    public StkOverview[] stkOverview() {
-        final List<StkOverview> cars = carService.getStkOverview();
-
-        return cars.toArray(new StkOverview[cars.size()]);
-    }
+//    @RequestMapping(value = "/overview", method = RequestMethod.GET)
+//    public CarOverview[] carOverview() {
+//        final List<CarOverview> cars = carService.getOverview();
+//
+//        return cars.toArray(new CarOverview[cars.size()]);
+//    }
 
 	@InitBinder
 	public void initBinder(final WebDataBinder binder) {

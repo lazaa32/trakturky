@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import cz.unicorn.tga.tractor.model.*;
-import cz.unicorn.tga.tractor.service.StkManagerService;
+import cz.unicorn.tga.tractor.service.StkOverviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import cz.unicorn.tga.tractor.service.CarManagerService;
 import cz.unicorn.tga.tractor.web.CommonConstants;
 
 /**
@@ -28,27 +27,20 @@ import cz.unicorn.tga.tractor.web.CommonConstants;
  */
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = StkListController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class StkListController {
+@RequestMapping(value = StkOverviewController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class StkOverviewController {
 
-    public static final String BASE_URL = CommonConstants.SLASH + "stk";
+    public static final String BASE_URL = CommonConstants.SLASH + "case";
 
     @Autowired
-    private StkManagerService stkService;
+    private StkOverviewService stkOverviewService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public StkDTO[] getAllStks() {
-        final List<StkDTO> stks = stkService.getAllStks();
+    public StkOverviewDTO[] stkOverview() {
+        final List<StkOverviewDTO> cars = stkOverviewService.getOverview();
 
-        return stks.toArray(new StkDTO[stks.size()]);
+        return cars.toArray(new StkOverviewDTO[cars.size()]);
     }
-//TODO presunout do jinych kontroleru
-//    @RequestMapping(value = "/overview", method = RequestMethod.GET)
-//    public StkOverview[] stkOverview() {
-//        final List<StkOverview> cars = carService.getStkOverview();
-//
-//        return cars.toArray(new StkOverview[cars.size()]);
-//    }
 
     @InitBinder
     public void initBinder(final WebDataBinder binder) {

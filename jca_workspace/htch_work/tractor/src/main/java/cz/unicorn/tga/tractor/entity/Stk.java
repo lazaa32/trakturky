@@ -1,14 +1,12 @@
 package cz.unicorn.tga.tractor.entity;
 
-import cz.unicorn.tga.tractor.model.enumeration.CarState;
-import cz.unicorn.tga.tractor.model.enumeration.CarsType;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity(name = "car_stk")
+@Entity
+@Table(name = "car_stk")
 @Data
 public class Stk {
 
@@ -17,14 +15,15 @@ public class Stk {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "STK_ID_GENERATOR")
     private Long id;
 
-    @Column(name = "car")
-    private Long car;
+    @ManyToOne
+    @JoinColumn(name = "car")
+    private Car car;
 
     @Column(name = "check_date")
     private Date dateOfCheck;
 
     @Column(name = "is_pass")
-    private String isPass;
+    private Boolean isPass;
 
 
 }

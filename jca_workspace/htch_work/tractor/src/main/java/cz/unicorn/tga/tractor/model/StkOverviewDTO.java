@@ -15,7 +15,7 @@ import lombok.*;
  */
 @Data
 @ToString
-public class StkOverview implements Serializable {
+public class StkOverviewDTO implements Serializable {
 
     private Long id;
     private String type;

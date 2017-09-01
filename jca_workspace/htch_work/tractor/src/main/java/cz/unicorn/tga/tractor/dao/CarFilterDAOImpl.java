@@ -35,7 +35,7 @@ public class CarFilterDAOImpl extends GenericHibernateDAO<Car,Long> implements C
 				filter.getLastTechnicalCheckTo());
 		builder.appendIfNotNull("AND c.price >= :priceFrom", "priceFrom", filter.getPriceFrom());
 		builder.appendIfNotNull("AND c.price <= :priceTo", "priceTo", filter.getPriceTo());
-//		builder.appendIfNotNull("AND c.nickname = :nickname", "nickname", filter.getNickname());
+		builder.appendIfNotNull("AND c.nickname = :nickname", "nickname", filter.getNickname());
 
 		return builder.build();
 	}

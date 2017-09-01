@@ -33,7 +33,6 @@ public class StkManagerServiceBean implements StkManagerService {
     /** {@inheritDoc} */
     @Override
     public List<StkDTO> getAllStks() {
-
         return dtoMapper.convertStk(stkDAO.findAll());
     }
 

@@ -19,8 +19,9 @@ public interface CarManagerService {
 
 	List<CarDTO> findCarsByFilter(CarFilter filter);
 
-	List<CarOverview> getOverview();
+	//TODO presunout do ostatnich kontroleru
+//	List<CarOverview> getOverview();
 
-    List<StkOverview> getStkOverview();
+//    List<StkOverviewDTO> getStkOverview();
 
 }
