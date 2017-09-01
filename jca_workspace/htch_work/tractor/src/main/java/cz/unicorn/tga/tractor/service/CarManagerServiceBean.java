@@ -86,4 +86,18 @@ public class CarManagerServiceBean implements CarManagerService {
 		return dtoMapper.convert(carFilterDAO.findByFilter(filter));
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public List<CarOverview> getOverview() {
+
+		return dtoMapper.convertToOverview(carDAO.findAll());
+	}
+
+    /** {@inheritDoc} */
+    @Override
+    public List<StkOverview> getStkOverview() {
+
+        return dtoMapper.convertToStkOverview(carDAO.findAll());
+    }
+
 }

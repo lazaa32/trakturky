@@ -15,14 +15,12 @@ import lombok.*;
  */
 @Data
 @ToString
-public class CarOverview implements Serializable {
+public class StkOverview implements Serializable {
 
     private Long id;
     private String type;
     private String vin;
-    private String carState;
-    private Date dateOfAcquisition;
+    private Date dateOfLastTechnicalCheck;
     private String nickname;
-    private String client;
 
 }

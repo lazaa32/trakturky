@@ -28,5 +28,6 @@ public class CarFilter {
 	private Date acquiredTo;
 	private Date lastTechnicalCheckFrom;
 	private Date lastTechnicalCheckTo;
+	private String nickname;
 
 }

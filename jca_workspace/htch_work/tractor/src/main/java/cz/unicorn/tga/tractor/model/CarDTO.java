@@ -24,5 +24,6 @@ public class CarDTO implements Serializable {
 	private Date dateOfAcquisition;
 	private Date dateOfLastTechnicalCheck;
 	private BigDecimal price;
+	private String nickname;
 
 }

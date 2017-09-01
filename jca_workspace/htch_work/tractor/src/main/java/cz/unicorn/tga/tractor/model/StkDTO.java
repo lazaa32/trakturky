@@ -7,7 +7,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import cz.unicorn.tga.tractor.entity.Car;
 import lombok.*;
+
+import javax.persistence.*;
 
 /**
  * @author User
@@ -15,14 +18,10 @@ import lombok.*;
  */
 @Data
 @ToString
-public class CarOverview implements Serializable {
-
+public class StkDTO implements Serializable {
     private Long id;
-    private String type;
-    private String vin;
-    private String carState;
-    private Date dateOfAcquisition;
-    private String nickname;
-    private String client;
+    private Long car;
+    private Date dateOfCheck;
+    private String isPass;
 
 }

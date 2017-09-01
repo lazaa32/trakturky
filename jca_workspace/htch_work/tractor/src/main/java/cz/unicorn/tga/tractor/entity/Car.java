@@ -50,5 +50,7 @@ public class Car {
 
 	private BigDecimal price;
 
+	private String nickname;
+
 
 }

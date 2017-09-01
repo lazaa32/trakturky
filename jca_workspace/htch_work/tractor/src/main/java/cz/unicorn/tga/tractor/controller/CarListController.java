@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import cz.unicorn.tga.tractor.model.CarOverview;
+import cz.unicorn.tga.tractor.model.StkOverview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
@@ -44,17 +46,28 @@ public class CarListController {
 	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
-
 	public CarDTO[] findByFilter(final CarFilter carFilter) {
 
 		// final CarFilter filter = new CarFilter(id, type, vin, state, priceFrom, priceTo, acquiredFrom, acquiredTo,
 		// lastTechnicalCheckFrom, lastTechnicalCheckTo);
-		 final CarFilter filter = new CarFilter(new Long(2), null, null, null, null, null, null, null,
-		 null, null);
 		final List<CarDTO> result = carService.findCarsByFilter(carFilter);
 
 		return result.toArray(new CarDTO[result.size()]);
 	}
+
+    @RequestMapping(value = "/overview", method = RequestMethod.GET)
+    public CarOverview[] carOverview() {
+        final List<CarOverview> cars = carService.getOverview();
+
+        return cars.toArray(new CarOverview[cars.size()]);
+    }
+
+    @RequestMapping(value = "/stk", method = RequestMethod.GET)
+    public StkOverview[] stkOverview() {
+        final List<StkOverview> cars = carService.getStkOverview();
+
+        return cars.toArray(new StkOverview[cars.size()]);
+    }
 
 	@InitBinder
 	public void initBinder(final WebDataBinder binder) {
