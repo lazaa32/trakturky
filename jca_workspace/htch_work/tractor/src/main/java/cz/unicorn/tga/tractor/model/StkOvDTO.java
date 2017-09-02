@@ -15,14 +15,16 @@ import lombok.*;
  */
 @Data
 @ToString
-public class StkOverviewDTO implements Serializable {
+public class StkOvDTO implements Serializable {
 
-    private Long idCar;
-    private String type;
+    private Long id;
+    private String cars_type;
     private String vin;
-    private Date dateOfLastTechnicalCheck;
+    private Date check_date;
     private String nickname;
-    private Long idLending;
-    private String client;
-    private Date dateOfReturn;
+    private Long len_id;
+    private Date date_to;
+    private String name;
+    private String surname;
+
 }

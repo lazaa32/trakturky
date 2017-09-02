@@ -6,12 +6,7 @@ package cz.unicorn.tga.tractor.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 import lombok.Data;
 
@@ -20,6 +15,7 @@ import lombok.Data;
  *
  */
 @Entity
+@Table(name = "lending")
 @Data
 public class Lending {
 
@@ -28,7 +24,9 @@ public class Lending {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "LENDING_ID_GENERATOR")
     private Long id;
 
-    private Long car;
+    @ManyToOne
+    @JoinColumn(name = "car")
+    private Car car;
 
     private String vin;
 
@@ -40,10 +38,13 @@ public class Lending {
 
     private BigDecimal price;
 
-    @Column(name = "car_client")
-    private Long client;
+    @ManyToOne
+    @JoinColumn(name = "car_client")
+    private Client client;
 
     private BigDecimal lattitude;
 
     private BigDecimal longitude;
+
+
 }

@@ -5,15 +5,9 @@ package cz.unicorn.tga.tractor.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 import cz.unicorn.tga.tractor.model.enumeration.CarState;
 import cz.unicorn.tga.tractor.model.enumeration.CarsType;
@@ -51,6 +45,12 @@ public class Car {
 	private BigDecimal price;
 
 	private String nickname;
+
+	@OneToMany(mappedBy = "car")
+	private List<Stk> stks;
+
+	@OneToMany(mappedBy = "car")
+	private List<Lending> lends;
 
 
 }

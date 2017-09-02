@@ -4,8 +4,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
-@Entity(name = "car_client")
+@Entity
+@Table(name = "car_client")
 @Data
 public class Client {
 
@@ -25,4 +27,7 @@ public class Client {
 
     @Column(name = "ceil_phone")
     private String cellPhone;
+
+    @OneToMany(mappedBy = "client")
+    List<Lending> lendings;
 }

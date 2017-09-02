@@ -30,7 +30,7 @@ import cz.unicorn.tga.tractor.web.CommonConstants;
 @RequestMapping(value = StkOverviewController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class StkOverviewController {
 
-    public static final String BASE_URL = CommonConstants.SLASH + "case";
+    public static final String BASE_URL = CommonConstants.SLASH + "case1";
 
     @Autowired
     private StkOverviewService stkOverviewService;
