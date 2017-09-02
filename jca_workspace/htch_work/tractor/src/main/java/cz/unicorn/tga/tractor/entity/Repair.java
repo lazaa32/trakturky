@@ -15,7 +15,9 @@ public class Repair {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "REPAIR_ID_GENERATOR")
     private Long id;
 
-    private Long car;
+    @ManyToOne
+    @JoinColumn(name = "car")
+    private Car car;
     private Date date;
     private BigDecimal price;
 

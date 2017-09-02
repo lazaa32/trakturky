@@ -2,19 +2,15 @@ package cz.unicorn.tga.tractor.service;
 
 import cz.unicorn.tga.tractor.dao.CarDAO;
 import cz.unicorn.tga.tractor.dao.StkDAO;
-import cz.unicorn.tga.tractor.dao.StkFilterDAOImpl;
 import cz.unicorn.tga.tractor.entity.Car;
 import cz.unicorn.tga.tractor.entity.Stk;
-import cz.unicorn.tga.tractor.model.StkOvDTO;
 import cz.unicorn.tga.tractor.model.StkOverviewDTO;
 import cz.unicorn.tga.tractor.model.enumeration.CarState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConverterNotFoundException;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -27,7 +23,6 @@ import java.util.Locale;
 @Transactional
 public class StkOverviewServiceBean implements StkOverviewService {
     private final StkDAO stkDAO;
-//    private final StkDAO stkDAO;
     private final CarDAO carDAO;
 
     @Autowired
@@ -74,10 +69,6 @@ public class StkOverviewServiceBean implements StkOverviewService {
         }
 
 
-        for(int i=0; i<stk.length;i++){
-            if (stk[i] != null) System.out.println(stk[i].getClass());
-        }
-
         StkOverviewDTO stkOverviewDTO = new StkOverviewDTO();
 
         try {
@@ -86,7 +77,7 @@ public class StkOverviewServiceBean implements StkOverviewService {
             stkOverviewDTO.setVin(stk[2] != null ? (String) stk[2] : null);
             stkOverviewDTO.setDateOfLastTechnicalCheck(stk[3] != null ? (Date) stk[3] : null);
             stkOverviewDTO.setNickname(stk[4] != null ? (String) stk[4] : null);
-            stkOverviewDTO.setIdLending(stk[5] != null ? Long.parseLong(String.valueOf(stk[0])) : null);
+            stkOverviewDTO.setIdLending(stk[5] != null ? Long.parseLong(String.valueOf(stk[5])) : null);
             stkOverviewDTO.setDateOfReturn(stk[6] != null ? (Date) stk[6] : null);
             if (stk[8] != null) {
                 stkOverviewDTO.setClient((String) stk[7] + " " + (String) stk[8]);
@@ -119,17 +110,13 @@ public class StkOverviewServiceBean implements StkOverviewService {
     /** {@inheritDoc} */
     @Override
     public List<StkOverviewDTO> getOverview() {
-        String string = "November 5, 2015";
+        String string = "November 5, 2012";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH);
         LocalDate date = LocalDate.parse(string, formatter);
 
         return convertObj2StkOv(stkDAO.findObj(new CarState[]{CarState.DISABLED, CarState.NEW},
                 Date.from(date.minusMonths(10).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant())));
-//        return convert2StkOv(stkDAO.findStkForView(new CarState[]{CarState.DISABLED, CarState.NEW},
 //                Date.from(LocalDate.now().minusMonths(10).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant())));
-
-
-
     }
 
 }

@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import cz.unicorn.tga.tractor.model.*;
-import cz.unicorn.tga.tractor.service.StkManagerService;
+import cz.unicorn.tga.tractor.model.ClientDTO;
+import cz.unicorn.tga.tractor.service.ClientManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
@@ -27,19 +27,19 @@ import cz.unicorn.tga.tractor.web.CommonConstants;
  */
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = StkListController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class StkListController {
+@RequestMapping(value = ClientListController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class ClientListController {
 
-    public static final String BASE_URL = CommonConstants.SLASH + "stk";
+    public static final String BASE_URL = CommonConstants.SLASH + "clients";
 
     @Autowired
-    private StkManagerService stkService;
+    private ClientManagerService clientService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public StkDTO[] getAllStks() {
-        final List<StkDTO> stks = stkService.getAllStks();
+    public ClientDTO[] getAllClients() {
+        final List<ClientDTO> clients = clientService.getAllClients();
 
-        return stks.toArray(new StkDTO[stks.size()]);
+        return clients.toArray(new ClientDTO[clients.size()]);
     }
 
     @InitBinder

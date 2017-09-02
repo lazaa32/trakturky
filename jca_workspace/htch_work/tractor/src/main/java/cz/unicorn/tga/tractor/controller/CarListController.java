@@ -46,19 +46,10 @@ public class CarListController {
 	@RequestMapping(value = "/find", method = RequestMethod.GET)
 	public CarDTO[] findByFilter(final CarFilter carFilter) {
 
-		// final CarFilter filter = new CarFilter(id, type, vin, state, priceFrom, priceTo, acquiredFrom, acquiredTo,
-		// lastTechnicalCheckFrom, lastTechnicalCheckTo);
 		final List<CarDTO> result = carService.findCarsByFilter(carFilter);
 
 		return result.toArray(new CarDTO[result.size()]);
 	}
-
-//    @RequestMapping(value = "/overview", method = RequestMethod.GET)
-//    public CarOverview[] carOverview() {
-//        final List<CarOverview> cars = carService.getOverview();
-//
-//        return cars.toArray(new CarOverview[cars.size()]);
-//    }
 
 	@InitBinder
 	public void initBinder(final WebDataBinder binder) {

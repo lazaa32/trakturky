@@ -50,7 +50,8 @@ public class Car {
 	private List<Stk> stks;
 
 	@OneToMany(mappedBy = "car")
-	private List<Lending> lends;
+	private List<Lending> lendings;
 
-
+	@OneToMany(mappedBy = "car")
+	private List<Repair> repairs;
 }

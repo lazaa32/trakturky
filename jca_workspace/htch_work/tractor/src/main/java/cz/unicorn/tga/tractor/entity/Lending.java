@@ -28,8 +28,6 @@ public class Lending {
     @JoinColumn(name = "car")
     private Car car;
 
-    private String vin;
-
     @Column(name = "date_from")
     private Date dateFrom;
 
@@ -45,6 +43,4 @@ public class Lending {
     private BigDecimal lattitude;
 
     private BigDecimal longitude;
-
-
 }

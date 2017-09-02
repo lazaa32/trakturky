@@ -7,8 +7,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import cz.unicorn.tga.tractor.model.*;
-import cz.unicorn.tga.tractor.service.StkManagerService;
+import cz.unicorn.tga.tractor.model.RepairDTO;
+import cz.unicorn.tga.tractor.service.RepairManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
@@ -27,19 +27,19 @@ import cz.unicorn.tga.tractor.web.CommonConstants;
  */
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = StkListController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class StkListController {
+@RequestMapping(value = RepairListController.BASE_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+public class RepairListController {
 
-    public static final String BASE_URL = CommonConstants.SLASH + "stk";
+    public static final String BASE_URL = CommonConstants.SLASH + "repairs";
 
     @Autowired
-    private StkManagerService stkService;
+    private RepairManagerService repairService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public StkDTO[] getAllStks() {
-        final List<StkDTO> stks = stkService.getAllStks();
+    public RepairDTO[] getAllRepairs() {
+        final List<RepairDTO> repairs = repairService.getAllRepairs();
 
-        return stks.toArray(new StkDTO[stks.size()]);
+        return repairs.toArray(new RepairDTO[repairs.size()]);
     }
 
     @InitBinder

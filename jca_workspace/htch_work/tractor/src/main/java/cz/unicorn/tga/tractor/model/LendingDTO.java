@@ -4,15 +4,15 @@ import lombok.Data;
 import lombok.ToString;
 import org.aspectj.lang.annotation.DeclareAnnotation;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
 @ToString
-public class LendingDTO {
+public class LendingDTO implements Serializable {
     private Long id;
     private Long car;
-    private String vin;
     private Date dateFrom;
     private Date dateTo;
     private BigDecimal price;

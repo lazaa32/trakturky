@@ -4,7 +4,6 @@
 package cz.unicorn.tga.tractor.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 import lombok.*;
@@ -15,14 +14,14 @@ import lombok.*;
  */
 @Data
 @ToString
-public class CarOverview implements Serializable {
+public class CarOverviewDTO implements Serializable {
 
-    private Long id;
+    private Long idCar;
     private String type;
     private String vin;
-    private String carState;
-    private Date dateOfAcquisition;
     private String nickname;
+    private Date dateOfRegistration;
+    private String state;
+    private Long idLending;
     private String client;
-
 }
