@@ -17,9 +17,10 @@ public class StkFilterDAOImpl extends GenericHibernateDAO<Stk,Long> implements S
     }
 
     private Query createQueryFromCarFilter(final StkFilter filter) {
-        final QueryBuilder builder = new QueryBuilder(getSession(), "SELECT s FROM car_stk s WHERE 1 = 1");
+        final QueryBuilder builder = new QueryBuilder(getSession(), "SELECT s FROM Stk s WHERE 1 = 1");
 
         builder.appendIfNotNull("AND s.id = :id", "id", filter.getId());
+        builder.appendIfNotNull("AND s.car = :car", "car", filter.getCar());
 
         return builder.build();
     }

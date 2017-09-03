@@ -42,6 +42,14 @@ public class StkListController {
         return stks.toArray(new StkDTO[stks.size()]);
     }
 
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public StkDTO[] findByFilter(final StkFilter stkFilter) {
+
+        final List<StkDTO> result = stkService.findStksByFilter(stkFilter);
+
+        return result.toArray(new StkDTO[result.size()]);
+    }
+
     @InitBinder
     public void initBinder(final WebDataBinder binder) {
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

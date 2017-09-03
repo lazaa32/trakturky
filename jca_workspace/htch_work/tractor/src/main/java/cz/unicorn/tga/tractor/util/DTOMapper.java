@@ -25,6 +25,11 @@ public interface DTOMapper {
     LendingDTO convertLending(final Lending lending);
     List<LendingDTO> convertLending(final List<Lending> lendings);
 
+    @Mapping(target = "car.id", source = "car")
+    @Mapping(target = "client.id", source = "client")
+    Lending convert2Lending(LendingDTO lendingDTO);
+
+
     @Mapping(target = "car", source = "car.id")
     RepairDTO convertRepair(final Repair repairs);
     List<RepairDTO> convertRepair(final List<Repair> repairs);

@@ -23,12 +23,13 @@ public class StkManagerServiceBean implements StkManagerService {
 
     private final StkDAO stkDAO;
     private final DTOMapper dtoMapper;
+    private final StkFilterDAO stkFilterDAO;
 
-    @Autowired public StkManagerServiceBean(StkDAO stkDAO, DTOMapper dtoMapper) {
+    @Autowired public StkManagerServiceBean(StkDAO stkDAO, StkFilterDAO stkFilterDAO, DTOMapper dtoMapper) {
         this.stkDAO = stkDAO;
         this.dtoMapper = dtoMapper;
+        this.stkFilterDAO = stkFilterDAO;
     }
-
 
     /** {@inheritDoc} */
     @Override
@@ -36,5 +37,8 @@ public class StkManagerServiceBean implements StkManagerService {
         return dtoMapper.convertStk(stkDAO.findAll());
     }
 
-
+    @Override
+    public List<StkDTO> findStksByFilter(StkFilter stkFilter) {
+        return dtoMapper.convertStk(stkFilterDAO.findByFilter(stkFilter));
+    }
 }

@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import cz.unicorn.tga.tractor.model.FreeCar;
 import cz.unicorn.tga.tractor.model.LendingDTO;
 import cz.unicorn.tga.tractor.model.LendingFilter;
 import cz.unicorn.tga.tractor.service.LendingManagerService;
@@ -14,11 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import cz.unicorn.tga.tractor.web.CommonConstants;
 
@@ -49,6 +46,12 @@ public class LendingListController {
         final List<LendingDTO> result = lendingService.findLendingsByFilter(lendingFilter);
 
         return result.toArray(new LendingDTO[result.size()]);
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public void findAvailable(@RequestBody LendingDTO newLen) {
+
+        lendingService.save(newLen);
     }
 
     @InitBinder
