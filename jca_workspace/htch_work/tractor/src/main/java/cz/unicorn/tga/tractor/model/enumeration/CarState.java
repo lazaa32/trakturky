@@ -15,4 +15,14 @@ public enum CarState {
 	public static CarState defaultState() {
 		return NEW;
 	}
+
+	public static CarState parseType(final String type) {
+		for (final CarState t : CarState.values()) {
+			if (t.name().equalsIgnoreCase(type)) {
+				return t;
+			}
+		}
+
+		return null;
+	}
 }

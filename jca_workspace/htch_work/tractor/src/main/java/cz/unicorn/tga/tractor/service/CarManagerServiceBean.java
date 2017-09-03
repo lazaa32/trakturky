@@ -85,4 +85,13 @@ public class CarManagerServiceBean implements CarManagerService {
 		return dtoMapper.convert(carFilterDAO.findByFilter(filter));
 	}
 
+	/** {@inheritDoc}
+     * @param freeCar*/
+	@Override
+	public List<CarDTO> findAvailableCars(FreeCar freeCar) {
+
+        List<Car> availableCars = carDAO.findAvailableCars(freeCar.getDateFrom(), freeCar.getDateTo(), CarsType.parseType(freeCar.getType()));
+        return dtoMapper.convert(availableCars);
+	}
+
 }

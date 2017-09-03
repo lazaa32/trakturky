@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import cz.unicorn.tga.tractor.model.LendingDTO;
+import cz.unicorn.tga.tractor.model.LendingFilter;
 import cz.unicorn.tga.tractor.service.LendingManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -40,6 +41,14 @@ public class LendingListController {
         final List<LendingDTO> lendings = lendingService.getAllLendings();
 
         return lendings.toArray(new LendingDTO[lendings.size()]);
+    }
+
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    public LendingDTO[] findByFilter(final LendingFilter lendingFilter) {
+
+        final List<LendingDTO> result = lendingService.findLendingsByFilter(lendingFilter);
+
+        return result.toArray(new LendingDTO[result.size()]);
     }
 
     @InitBinder

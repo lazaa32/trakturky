@@ -2,6 +2,8 @@ package cz.unicorn.tga.tractor.dao;
 
 import java.util.List;
 
+import cz.unicorn.tga.tractor.model.enumeration.CarState;
+import cz.unicorn.tga.tractor.model.enumeration.CarsType;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -25,8 +27,8 @@ public class CarFilterDAOImpl extends GenericHibernateDAO<Car,Long> implements C
 
 		builder.appendIfNotNull("AND c.id = :id", "id", filter.getId());
 		builder.appendIfNotNull("AND c.vin = :vin", "vin", filter.getVin());
-		builder.appendIfNotNull("AND c.type = :type", "type", filter.getType());
-		builder.appendIfNotNull("AND c.state = :state", "state", filter.getState());
+		builder.appendIfNotNull("AND c.type = :type", "type", CarsType.parseType(filter.getType()));
+		builder.appendIfNotNull("AND c.carState = :state", "state", CarState.parseType(filter.getState()));
 		builder.appendIfNotNull("AND c.dateOfAcquisition >= :acquiredFrom", "acquiredFrom", filter.getAcquiredFrom());
 		builder.appendIfNotNull("AND c.dateOfAcquisition <= :acquiredTo", "acquiredTo", filter.getAcquiredTo());
 		builder.appendIfNotNull("AND c.dateOfLastTechnicalCheck >= :checkFrom", "checkFrom",

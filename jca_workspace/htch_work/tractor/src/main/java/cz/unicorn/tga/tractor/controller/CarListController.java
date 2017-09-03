@@ -7,15 +7,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import cz.unicorn.tga.tractor.model.FreeCar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import cz.unicorn.tga.tractor.model.CarDTO;
 import cz.unicorn.tga.tractor.model.CarFilter;
@@ -47,6 +44,14 @@ public class CarListController {
 	public CarDTO[] findByFilter(final CarFilter carFilter) {
 
 		final List<CarDTO> result = carService.findCarsByFilter(carFilter);
+
+		return result.toArray(new CarDTO[result.size()]);
+	}
+
+	@RequestMapping(value = "/available", method = RequestMethod.POST)
+	public CarDTO[] findAvailable(@RequestBody FreeCar freeCar) {
+
+		final List<CarDTO> result = carService.findAvailableCars(freeCar);
 
 		return result.toArray(new CarDTO[result.size()]);
 	}

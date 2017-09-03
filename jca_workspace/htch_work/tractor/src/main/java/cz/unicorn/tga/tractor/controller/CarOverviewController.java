@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import cz.unicorn.tga.tractor.model.CarOvFilter;
 import cz.unicorn.tga.tractor.model.CarOverviewDTO;
 import cz.unicorn.tga.tractor.service.CarOverviewService;
 import org.springframework.beans.factory.annotation.Autowired;

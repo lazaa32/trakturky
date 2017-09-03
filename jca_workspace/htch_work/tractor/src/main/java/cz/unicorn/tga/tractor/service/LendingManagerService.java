@@ -12,6 +12,7 @@ import cz.unicorn.tga.tractor.model.*;
  *
  */
 public interface LendingManagerService {
-
+    //void createNewLending(LendingNewForm lendingNewForm);
     List<LendingDTO> getAllLendings();
+    List<LendingDTO> findLendingsByFilter(LendingFilter lendingFilter);
 }

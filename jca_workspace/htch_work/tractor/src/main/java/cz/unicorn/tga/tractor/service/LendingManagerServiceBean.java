@@ -22,10 +22,12 @@ import cz.unicorn.tga.tractor.util.*;
 public class LendingManagerServiceBean implements LendingManagerService {
 
     private final LendingDAO lendingDAO;
+    private final LendingFilterDAO filterDAO;
     private final DTOMapper dtoMapper;
 
-    @Autowired public LendingManagerServiceBean(LendingDAO lendingDAO, DTOMapper dtoMapper) {
+    @Autowired public LendingManagerServiceBean(LendingDAO lendingDAO, LendingFilterDAO filterDAO, DTOMapper dtoMapper) {
         this.lendingDAO = lendingDAO;
+        this.filterDAO = filterDAO;
         this.dtoMapper = dtoMapper;
     }
 
@@ -33,5 +35,12 @@ public class LendingManagerServiceBean implements LendingManagerService {
     @Override
     public List<LendingDTO> getAllLendings() {
         return dtoMapper.convertLending(lendingDAO.findAll());
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public List<LendingDTO> findLendingsByFilter(final LendingFilter filter) {
+
+        return dtoMapper.convertLending(filterDAO.findByFilter(filter));
     }
 }

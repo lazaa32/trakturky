@@ -75,10 +75,6 @@ public class CarOverviewServiceBean implements CarOverviewService {
     /** {@inheritDoc} */
     @Override
     public List<CarOverviewDTO> getOverview() {
-//        String string = "November 5, 2012";
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH);
-//        LocalDate date = LocalDate.parse(string, formatter);
-
         return convertObj2CarOv(carDAO.findCarsClients());
     }
 

@@ -16,6 +16,7 @@ public interface CarManagerService {
 	void createNewCar(CarNewForm carNewForm);
 
 	List<CarDTO> getAllCars();
+	List<CarDTO> findAvailableCars(FreeCar freeCar);
 
 	List<CarDTO> findCarsByFilter(CarFilter filter);
 
