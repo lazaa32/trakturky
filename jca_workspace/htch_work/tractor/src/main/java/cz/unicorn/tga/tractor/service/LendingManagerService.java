@@ -12,7 +12,7 @@ import cz.unicorn.tga.tractor.model.*;
  *
  */
 public interface LendingManagerService {
-    void save(LendingDTO lendingNewForm);
+    void save(NewLendingDTO lendingNewForm);
     List<LendingDTO> getAllLendings();
     List<LendingDTO> findLendingsByFilter(LendingFilter lendingFilter);
 }

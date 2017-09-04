@@ -24,22 +24,4 @@ public class StkFilterDAOImpl extends GenericHibernateDAO<Stk,Long> implements S
 
         return builder.build();
     }
-/*
-    public List<Stk> findAndOrderByCheck() {
-        final Query query = createQueryOrder();
-        return query.list();
-    }
-
-    private Query createQueryOrder() {
-        final QueryBuilder builder = new QueryBuilder(getSession(),
-                "SELECT s FROM car_stk s JOIN car c ON car.id = car_stk.car " +
-                        "WHERE c.state LIKE 'BROKEN'" +
-                        " OR c.state LIKE 'IN_GARAGE'" +
-                        "OR c.state LIKE 'LENDED' " +
-                        "OR c.state LIKE 'REGISTRED' " +
-                        "ORDER BY s.dateOfCheck ASC");
-
-        return builder.build();
-    }*/
-
 }

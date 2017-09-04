@@ -10,6 +10,7 @@ import java.util.List;
 import cz.unicorn.tga.tractor.model.FreeCar;
 import cz.unicorn.tga.tractor.model.LendingDTO;
 import cz.unicorn.tga.tractor.model.LendingFilter;
+import cz.unicorn.tga.tractor.model.NewLendingDTO;
 import cz.unicorn.tga.tractor.service.LendingManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -49,7 +50,7 @@ public class LendingListController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public void findAvailable(@RequestBody LendingDTO newLen) {
+    public void findAvailable(@RequestBody NewLendingDTO newLen) {
 
         lendingService.save(newLen);
     }
